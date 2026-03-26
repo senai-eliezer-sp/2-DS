@@ -1,3 +1,168 @@
+package Exercicio02;
+
+import java.util.Scanner;
+
+
+public class Exercicio02 {
+
+    public static void main(String[] args) {
+        
+         Scanner teclado;
+       teclado = new Scanner(System.in);
+        int i = 0;
+        double num = 0;
+       
+       while(3>i){
+        System.out.println("digite um numero: ");
+        num = num + teclado.nextDouble();
+        
+        i++;
+       }
+       
+      double media = num/3;
+       
+       System.out.printf("Média: %.2f",media);
+      
+    }
+    
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package Exercicio3;
+import javax.swing.JOptionPane;
+
+public class Exercicio3 {
+
+    public static void main(String[] args) {
+
+        String nome, idade, cidade, profissao;
+
+        nome = JOptionPane.showInputDialog("Digite seu nome:");
+        idade = JOptionPane.showInputDialog("Digite sua idade:");
+        cidade = JOptionPane.showInputDialog("Digite sua cidade:");
+        profissao = JOptionPane.showInputDialog("Digite sua cidade:");
+        
+        Integer.parseInt(idade);
+       
+
+        JOptionPane.showMessageDialog(null,"Sua ficha de cadastro:\nNome: " + nome +"\nIdade: " + idade + "\nCidade: " + cidade + "\nProfissão: "+ profissao );
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class Exercicio04 {
+
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        double c, f, k;
+
+        System.out.print("Digite a temperatura em Celsius: ");
+        c = teclado.nextDouble();
+
+        f = (c * 9.0/5.0) + 32;
+        k = c + 273.15;
+
+        System.out.printf("Celsius: %.1f °C\n", c);
+        System.out.printf("Fahrenheit: %.1f °F\n", f);
+        System.out.printf("Kelvin: %.1f K\n", k);
+
+        teclado.close();
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package Exercicio05;
+
+import java.util.Scanner;
+
+public class Exercicio05 {
+
+    public static void main(String[] args) {
+Scanner scnr = new Scanner(System.in);
+    int idade;
+    System.out.println("Digite sua idade: "); 
+    idade = scnr.nextInt();
+    
+    while (idade < 0){
+        System.out.println("Idade invalida.\nPor favor digite novamente: " );
+        idade = scnr.nextInt();
+    }
+        if (idade <= 11){
+            System.out.println("Você possui "+idade+" anos\nE você é uma criança" );
+        }
+        else{ 
+			if (idade <=17 ){
+            System.out.println("Você possui "+idade+" anos\nE você é um adolescente" );
+        }
+		else {
+			if (idade <= 28){
+            System.out.println("Você possui "+idade+" anos\nE você é um jovem adulto" );
+        }
+		else { 
+			if (idade <= 59){
+            System.out.println("Você possui "+idade+" anos\nE você é um adulto" );
+        }
+		else {
+            System.out.println("Você possui "+idade+" anos\nE você é um idoso" );
+        
+        }
+        
+        
+        
+        }
+        
+        
+        }
+        
+        }
+
+    }
+    
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import javax.swing.JOptionPane;
+
+public class Exercicio06 {
+    public static void main(String[] args) {
+
+        String operador = JOptionPane.showInputDialog("Escolha operação (+, -, *, /):");
+
+        double n1 = Double.parseDouble(JOptionPane.showInputDialog("Digite o primeiro número:"));
+        double n2 = Double.parseDouble(JOptionPane.showInputDialog("Digite o segundo número:"));
+
+        double resultado = 0;
+
+        switch (operador) {
+            case "+":
+                resultado = n1 + n2
+                break;
+            case "-":
+                resultado = n1 - n2;
+                break;
+            case "*":
+                resultado = n1 * n2;
+                break;
+            case "/":
+                if (n2 == 0) {
+                    JOptionPane.showMessageDialog(null, "Erro: divisão por zero");
+                    return;
+                }
+                resultado = n1 / n2;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Operação inválida");
+                return;
+		}
+
+        JOptionPane.showMessageDialog(null, "Resultado: " + resultado);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 package exercicio09;
 
@@ -26,7 +191,7 @@ public class Exercicio09 {
     }
     
 }
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 public class Exercicio07 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -53,7 +218,7 @@ public class Exercicio07 {
         }
     }
 }
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import java.util.Scanner;
 
 public class Exercicio10 {
@@ -92,6 +257,7 @@ public class Exercicio10 {
         }
     }
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 package Exercicio11;
 
 import javax.swing.JOptionPane;
@@ -118,7 +284,7 @@ public class Exercicio11 {
     }
     
 }
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import java.util.Scanner;
 
 public class Exercicio12 {
@@ -151,7 +317,7 @@ public class Exercicio12 {
         teclado.close();
     }
 }
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 package Exercicio13;
 
 import java.util.Scanner;
@@ -184,5 +350,5 @@ public class Exercicio13{
     }
 
 }
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
