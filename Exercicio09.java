@@ -92,5 +92,97 @@ public class Exercicio10 {
         }
     }
 }
+package Exercicio11;
+
+import javax.swing.JOptionPane;
+
+public class Exercicio11 {
+
+    public static void main(String[] args) {
+        final String senha_c = "Java2025";
+        String senha = "";
+        int tentativa = 3;
+        do {
+            
+            senha = JOptionPane.showInputDialog("Digite a senha (você possui " + tentativa + " chances)");
+            tentativa--;
+        }while (!senha.equals(senha_c) && tentativa > 0);
+        
+        if (senha.equals(senha_c)){
+            JOptionPane.showMessageDialog(null, "Acesso concedido!");
+        
+        }else {
+            JOptionPane.showMessageDialog(null, "Conta bloqueada!");
+        
+        }
+    }
+    
+}
+
+import java.util.Scanner;
+
+public class Exercicio12 {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        int n;
+
+        System.out.print("Digite a quantidade de termos: ");
+        n = teclado.nextInt();
+
+        if (n <= 0) {
+
+            System.out.println("Valor inválido");
+
+        } else {
+
+            int a = 0, b = 1;
+
+            for (int i = 1; i <= n; i++) {
+                
+                System.out.print(a + " ");
+
+                int proximo = a + b;
+                a = b;
+                b = proximo;
+            }
+        }
+
+        teclado.close();
+    }
+}
+
+package Exercicio13;
+
+import java.util.Scanner;
+
+public class Exercicio13{
+
+    public static void main(String[] args) {
+        Scanner digito = new Scanner(System.in);
+        int valorAleatorio = (int) (Math.random() * 100);
+        int num = 0;
+        System.out.println("Tente adivinhar o número: ");
+        num = digito.nextInt();
+        int tentativa = 1;
+        while (num != valorAleatorio) {
+
+            if (num > valorAleatorio) {
+                System.out.println("O número é menor");
+                System.out.println("Tente novamente:");
+                num = digito.nextInt();
+            } else {
+                System.out.println("O número é maior");
+                System.out.println("Tente novamente: ");
+                num = digito.nextInt();
+
+            }
+            tentativa++;
+        }
+
+        System.out.println("Você acertou em " + tentativa + " tentativas!");
+    }
+
+}
 
 
