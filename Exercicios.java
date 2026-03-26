@@ -1,3 +1,34 @@
+package Exercicio01;
+
+
+public class Exercicio01 {
+
+    public static void main(String[] args) {
+        int idade = 20;
+        double altura = 1.75;
+        char inicialNome = 'E';
+        boolean estudante = true;
+        String nomeCompleto = "Eliezer Souza";
+       
+        System.out.println("Nome completo: " + nomeCompleto);
+        
+        System.out.println("Idade: " + idade );
+        
+        System.out.println("Altura: " + altura );
+        
+        System.out.println("Inicial do nome: " + inicialNome);
+        
+        System.out.println("É estudante? " + estudante );
+        
+        if(estudante == true){
+            System.out.println("É um estudante!!");        
+    }
+        else{
+            System.out.println("Nao é um estudante!!");
+        }
+}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 package Exercicio02;
 
 import java.util.Scanner;
