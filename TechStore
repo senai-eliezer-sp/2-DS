@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor Cliente
+actor "Atendente de Logística" as Atendente
+
+rectangle TechStore {
+
+  (Realizar Login) as Login
+  
+  (Finalizar Compra) as Finalizar
+  (Consultar Status do Pedido) as Consultar
+  (Atualizar Rastreamento) as Atualizar
+
+  Cliente --> Finalizar
+  Cliente --> Consultar
+
+  Atendente --> Atualizar
+
+  Finalizar .> Login : <<include>>
+  Consultar .> Login : <<include>>
+  Atualizar .> Login : <<include>>
+}
+
+@enduml
