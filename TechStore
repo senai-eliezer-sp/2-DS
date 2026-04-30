@@ -1,25 +1,50 @@
-@startuml
-left to right direction
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1"
+           xmlns:xmi="http://www.omg.org/XMI"
+           xmlns:uml="http://www.omg.org/spec/UML/20090901"
+           xmi:id="model1"
+           name="TechStore">
 
-actor Cliente
-actor "Atendente de Logística" as Atendente
+  <!-- Atores -->
+  <packagedElement xmi:type="uml:Actor" xmi:id="actor_cliente" name="Cliente"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="actor_atendente" name="Atendente de Logística"/>
 
-rectangle TechStore {
+  <!-- Casos de Uso -->
+  <packagedElement xmi:type="uml:UseCase" xmi:id="uc_login" name="Realizar Login"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="uc_finalizar" name="Finalizar Compra"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="uc_consultar" name="Consultar Status do Pedido"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="uc_atualizar" name="Atualizar Rastreamento"/>
 
-  (Realizar Login) as Login
-  
-  (Finalizar Compra) as Finalizar
-  (Consultar Status do Pedido) as Consultar
-  (Atualizar Rastreamento) as Atualizar
+  <!-- Associações (Atores -> Casos de Uso) -->
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc1">
+    <ownedEnd xmi:id="end1" type="actor_cliente"/>
+    <ownedEnd xmi:id="end2" type="uc_finalizar"/>
+  </packagedElement>
 
-  Cliente --> Finalizar
-  Cliente --> Consultar
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc2">
+    <ownedEnd xmi:id="end3" type="actor_cliente"/>
+    <ownedEnd xmi:id="end4" type="uc_consultar"/>
+  </packagedElement>
 
-  Atendente --> Atualizar
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc3">
+    <ownedEnd xmi:id="end5" type="actor_atendente"/>
+    <ownedEnd xmi:id="end6" type="uc_atualizar"/>
+  </packagedElement>
 
-  Finalizar .> Login : <<include>>
-  Consultar .> Login : <<include>>
-  Atualizar .> Login : <<include>>
-}
+  <!-- Relacionamentos <<include>> -->
+  <packagedElement xmi:type="uml:Include" xmi:id="inc1">
+    <includingCase xmi:idref="uc_finalizar"/>
+    <addition xmi:idref="uc_login"/>
+  </packagedElement>
 
-@enduml
+  <packagedElement xmi:type="uml:Include" xmi:id="inc2">
+    <includingCase xmi:idref="uc_consultar"/>
+    <addition xmi:idref="uc_login"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Include" xmi:id="inc3">
+    <includingCase xmi:idref="uc_atualizar"/>
+    <addition xmi:idref="uc_login"/>
+  </packagedElement>
+
+</uml:Model>
