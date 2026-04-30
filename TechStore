@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<system name="TechStore">
+<useCaseDiagram system="TechStore">
 
+    <!-- Fronteira do Sistema -->
+    <systemBoundary name="TechStore">
+
+        <!-- Casos de Uso -->
+        <useCases>
+            <useCase id="UC1" name="Realizar Login"/>
+            <useCase id="UC2" name="Finalizar Compra"/>
+            <useCase id="UC3" name="Consultar Status do Pedido"/>
+            <useCase id="UC4" name="Atualizar Rastreamento"/>
+        </useCases>
+
+        <!-- Relacionamentos de Inclusão -->
+        <relationships>
+            <include base="UC2" included="UC1"/>
+            <include base="UC3" included="UC1"/>
+            <include base="UC4" included="UC1"/>
+        </relationships>
+
+    </systemBoundary>
+
+    <!-- Atores -->
     <actors>
         <actor id="A1" name="Cliente"/>
-        <actor id="A2" name="AtendenteLogistica"/>
+        <actor id="A2" name="Atendente de Logística"/>
     </actors>
 
-    <useCases>
-        <useCase id="UC1" name="RealizarLogin"/>
-        <useCase id="UC2" name="FinalizarCompra"/>
-        <useCase id="UC3" name="ConsultarStatusPedido"/>
-        <useCase id="UC4" name="AtualizarRastreamento"/>
-    </useCases>
-
-    <relationships>
-        <!-- Relações de inclusão obrigatória -->
-        <include from="UC2" to="UC1"/>
-        <include from="UC3" to="UC1"/>
-        <include from="UC4" to="UC1"/>
-    </relationships>
-
+    <!-- Associações Ator ↔ Caso de Uso -->
     <associations>
         <!-- Cliente -->
         <association actor="A1" useCase="UC2"/>
         <association actor="A1" useCase="UC3"/>
 
-        <!-- Atendente de Logística -->
+        <!-- Atendente -->
         <association actor="A2" useCase="UC4"/>
     </associations>
 
-</system>
+</useCaseDiagram>
