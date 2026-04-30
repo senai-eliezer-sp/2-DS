@@ -1,40 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<useCaseDiagram system="TechStore">
-
-    <!-- Fronteira do Sistema -->
-    <systemBoundary name="TechStore">
-
-        <!-- Casos de Uso -->
-        <useCases>
-            <useCase id="UC1" name="Realizar Login"/>
-            <useCase id="UC2" name="Finalizar Compra"/>
-            <useCase id="UC3" name="Consultar Status do Pedido"/>
-            <useCase id="UC4" name="Atualizar Rastreamento"/>
-        </useCases>
-
-        <!-- Relacionamentos de Inclusão -->
-        <relationships>
-            <include base="UC2" included="UC1"/>
-            <include base="UC3" included="UC1"/>
-            <include base="UC4" included="UC1"/>
-        </relationships>
-
-    </systemBoundary>
-
+<uml:UseCaseDiagram xmlns:uml="http://www.omg.org/spec/UML/20131001">
+    
     <!-- Atores -->
-    <actors>
-        <actor id="A1" name="Cliente"/>
-        <actor id="A2" name="Atendente de Logística"/>
-    </actors>
-
-    <!-- Associações Ator ↔ Caso de Uso -->
-    <associations>
-        <!-- Cliente -->
-        <association actor="A1" useCase="UC2"/>
-        <association actor="A1" useCase="UC3"/>
-
-        <!-- Atendente -->
-        <association actor="A2" useCase="UC4"/>
-    </associations>
-
-</useCaseDiagram>
+    <uml:Actor name="Cliente">
+        <description>Usuário final que realiza compras e acompanha pedidos</description>
+    </uml:Actor>
+    
+    <uml:Actor name="Atendente de Logística">
+        <description>Funcionário responsável por atualizar status de entregas</description>
+    </uml:Actor>
+    
+    <!-- Fronteira do Sistema -->
+    <uml:SystemBoundary name="TechStore">
+        <description>Plataforma de E-Commerce com controle de segurança obrigatório</description>
+        
+        <!-- Casos de Uso Principais -->
+        <uml:UseCase name="Finalizar Compra">
+            <description>Cliente finaliza produtos do carrinho</description>
+            <include ref="Realizar Login"/>
+        </uml:UseCase>
+        
+        <uml:UseCase name="Consultar Status do Pedido">
+            <description>Cliente acompanha entrega de seu pedido</description>
+            <include ref="Realizar Login"/>
+        </uml:UseCase>
+        
+        <uml:UseCase name="Atualizar Rastreamento">
+            <description>Atendente atualiza informações de transporte das encomendas</description>
+            <include ref="Realizar Login"/>
+        </uml:UseCase>
+        
+        <!-- Caso de Uso Reutilizável Obrigatório -->
+        <uml:UseCase name="Realizar Login" isAbstract="true">
+            <description>Autenticação obrigatória para acesso às áreas restritas (INCLUÍDO em todos os casos)</description>
+            <stereotype>&lt;&lt;include&gt;&gt;</stereotype>
+        </uml:UseCase>
+        
+    </uml:SystemBoundary>
+    
+    <!-- Relacionamentos -->
+    <uml:Association>
+        <source ref="Cliente"/>
+        <target ref="Finalizar Compra"/>
+    </uml:Association>
+    
+    <uml:Association>
+        <source ref="Cliente"/>
+        <target ref="Consultar Status do Pedido"/>
+    </uml:Association>
+    
+    <uml:Association>
+        <source ref="Atendente de Logística"/>
+        <target ref="Atualizar Rastreamento"/>
+    </uml:Association>
+    
+    <!-- Relacionamentos de Inclusão Obrigatórios -->
+    <uml:Include>
+        <source ref="Finalizar Compra"/>
+        <target ref="Realizar Login"/>
+        <description>Login obrigatório antes de finalizar compra</description>
+    </uml:Include>
+    
+    <uml:Include>
+        <source ref="Consultar Status do Pedido"/>
+        <target ref="Realizar Login"/>
+        <description>Login obrigatório para consultar status</description>
+    </uml:Include>
+    
+    <uml:Include>
+        <source ref="Atualizar Rastreamento"/>
+        <target ref="Realizar Login"/>
+        <description>Login obrigatório para atualizar rastreamento</description>
+    </uml:Include>
+    
+    <!-- Notas Explicativas -->
+    <uml:Note>
+        <text>
+        REGRAS DE SEGURANÇA OBRIGATÓRIAS:
+        ✓ "Realizar Login" é INCLUÍDO em TODOS os casos de uso
+        ✓ Relacionamento de inclusão representa dependência obrigatória
+        ✓ Atua como comportamento reutilizável para os 3 casos principais
+        ✓ Garante proteção de dados em todas as áreas restritas
+        </text>
+    </uml:Note>
+    
+</uml:UseCaseDiagram>
